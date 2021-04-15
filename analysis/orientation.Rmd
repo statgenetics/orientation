@@ -1,0 +1,207 @@
+---
+title: "R exercise: phenotype data proprocessing"
+author: "Haoyue Shuai"
+date: "Oct. 8th, 2020"
+output:
+  html_document:
+    code_folding: show
+    highlight: haddock
+    theme: lumen
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '4'
+  pdf_document:
+    toc: yes
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+#please do not touch this chunk
+knitr::opts_chunk$set(echo = TRUE, results = "hold",fig.width = 7, fig.height = 4)
+if(!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr, ggplot2, plyr, tidyverse, pander, ggpubr, rapportools, knitr, pROC, reshape2)  
+```
+
+\newpage
+
+## Instruction
+
+This exercise was adapted by Haoyue Shuai from one of her analysis on phenotype data in preparation for genetic association studies. Don't panic if you're just starting to learn R. The exercise does not involve writing serious software programs in R, but rather to execute some interactive and intuitive commands
+to get some preliminary phenotype data analysis done. There will be some questions throughout that you can answer using your own words (and some data science intuition) with a few sentences. Some of them involve writing additional codes but you can mostly find and modify codes we provide as examples to address the questions. You do not have to answer all the questions but we strongly encourage you to make an attempt.
+
+Please save your work as you complete them, but **do not** push your version of the file back to your forked github repo. Instead please follow the instructions in Task 4 to report the analysis back to us.
+
+### Dataset 
+
+The data-set can be found as `data/UKB_Phenotype/data_cleaned.csv`.
+
+\newpage
+
+\newpage 
+
+## Genetic association study
+
+We perform genetic association studies to identify genetic factors (variants) that may be involved in a complex trait (tinnitus, asthma, etc) etiology.
+In brief, genetic association studies compare and identify difference in genetic data of individuals with disease (cases) to those without (controls). 
+We report genetic variants that are observed more frequently in cases than in controls.
+
+In order to perform genetic association studies, we need phenotype data and genotype data from individuals we collect.
+
+- Phenotype and covariate data: age, sex, height, weight, condition for that trait (tinnitus in the example below case), etc.
+- Genotype data: You can roughly understand it as a sequence of the bases in DNA molecules, A/T/C/G, for all chromosomes in human genome.
+
+### Disease phenotype data 
+
+We use a toy data-set extracted from the UK Biobank project.
+
+**Load the data**
+
+Load `UKB_Phenotype/data_cleaned.csv`. Note, you only need to complete the codes when seeing `YOUR CODE`. Please execute other existing codes as is.
+
+```{r}
+# you need to put the data-set in the same folder
+# where this .rmd file sits,
+# which is here:
+getwd()
+sub_UKBB<-read.csv("data_cleaned.csv")
+```
+
+**Exploratory data analysis (EDA) of the data**
+```{r}
+dim(sub_UKBB) # This data covering 144756 participants and 11 variables of them (IID, FID, etc)
+```
+
+```{r}
+colnames(sub_UKBB) # 11 variables 
+```
+
+```{r}
+summary(sub_UKBB) 
+```
+
+```{r}
+head(sub_UKBB) # show part of the data
+```
+
+**Q1:** How many females and males are there in this data? Please show your code below how these numbers are computed.
+ 
+**Q2:** What type of trait do you think best describes tinnitus as a phenotype? 
+A.Binary B. Continuous C. Ordinal 
+
+**Q3:** Recode f.4803
+
+Field 4803 (f.4803) is the answers from participants for ACE touchscreen question "Do you get or have you had noises (such as ringing or buzzing) in your head or in one or both ears that lasts for more than five minutes at a time?" 
+
+These fields contains answers to the questions in their first, 2nd, 3rd and 4th hospital visit: f.4803.0.0, f.4803.1.0, f.4803.2.0, f.4803.3.0. 
+
+```{r recode}
+# Recode function:
+recode<-function(df,column_name){
+  new_names<-c()
+  for (i in column_name){
+    new_column_name<-paste0(i,"_recode")
+    new_names<-c(new_names,new_column_name)
+    df[,new_column_name] <- revalue(df[,i], c("No, never"= 0, 
+                                            "Yes, but not now, but have in the past"= 1, 
+                                            "Yes, now some of the time"= 1, 
+                                            "Yes, now a lot of the time"= 1,
+                                            "Yes, now most or all of the time"= 1,
+                                            "Prefer not to answer"= NA,
+                                            "Do not know"= NA ))
+  }
+  return (list(df=df,new_column_names=new_names))
+}
+
+# columns needs to be recoded:
+column_name<-c("f.4803.0.0","f.4803.1.0","f.4803.2.0","f.4803.3.0")
+
+# get a new data.frame with recoded columns added:
+df_recode<-recode(df=sub_UKBB,column_name)$df
+
+# get names of recoded columns:
+new_column_names<-recode(df=sub_UKBB,column_name)$new_column_names
+
+# show recode summary:
+for (i in new_column_names)
+{cat(i,"summary:");print(table(df_recode[,i]));cat("\n")}
+```
+
+What do you think has been achieved by recoding these fields?
+
+**Q4:** Define case and control status of tinnitus for each participant in the study:
+
+```{r}
+data_sub <- df_recode[,new_column_names]
+# Function to define cases
+f<-function(x){
+  visit<-c()
+  for (i in 1:4){
+    if (!is.na(x[i]))
+    {visit<-c(visit,x[i])}
+  }
+  if ("1" %in% visit){result= TRUE}
+  else{result=FALSE}
+  return (result)
+}
+# Apply the above function
+df_recode$cases<-apply(data_sub, 1, f)
+head(df_recode,10)
+```
+
+How many cases and how many controls do we have for this phenotpype?
+
+**Q5:** Extract a subset of columns from all participants for association study. 
+
+```{r}
+df_cases  <- df_recode %>%
+  select(IID,FID,cases)%>% 
+  filter(cases==TRUE)
+head(df_cases,10)  
+```
+Please modify codes above to extract all the controls and keep only these columns: `FID`, `IID`, `cases`, `f.22001.0.0`, `f.21003.0.0`, `f.21003.1.0`, `f.21003.2.0`, `f.21003.3.0`. Please show the first 10 rows of the output.
+```{r}
+# YOUR CODE
+```
+\newpage
+
+### Covariates
+ 
+**Q6:** Field 21003 contains the information of the age of participants, same as field 4803. Note that some of them have more than one age. Can you guess why?
+
+**Q7:** For those with more than one age records, which age do you think should be used in the genetic association analysis?
+
+**Q8:** Please compute a summary of age information for controls (you can use `summary()` function in R):
+```{r}
+#YOUR CODE
+```
+\newpage
+
+### Association testing via regression analysis
+
+To identify genetic factors that may be involved in this trait (tinnitus), we would need to find the association between the genotype and the phenotype. 
+Regression analysis is the basis of many association analysis. Instead of overwhelming you with huge genotype data, we use here a simple dataset for regression analysis to demonstrate what association studies look like.
+
+
+We fit below simple linear model with 2 variables from a data-set to see their relationship. For example `mpg` vs. `weight` in this `ISLR::Auto` data-set. 
+
+**Q9:** Is there association between `mpg of the car` and `weight of the car`? If so, it appearing to be positive or negative? Is the association significant and why? 
+
+```{r, echo=FALSE}
+# check if you have ISLR package, if not, install it
+if(!requireNamespace('ISLR')) install.packages('ISLR') 
+auto_data <- ISLR::Auto
+#  fit a linear regression model
+fit_1<-lm(mpg ~ weight, auto_data)
+summary(fit_1)
+```
+
+**Q10:** Please create a new variable to indicate cars having MPG greater than 23 as 1, otherwise 0, then use logistic regrssion via `glm()` function to analyze association between weight and this new variable you just created. Please comment on what you find.
+
+**Q11:** Find the `Estimates` from your association results summary. How do you interpret the estimated effects of weight in the context of linear regression, and in the context of logistic regression?
+
+```{r}
+#YOUR CODE
+```

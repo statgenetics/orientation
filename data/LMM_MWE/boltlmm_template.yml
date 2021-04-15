@@ -1,0 +1,7 @@
+# BoltLMM summary statistics template
+CHR: CHR
+POS: BP
+REF: ALLELE0
+ALT: ALLELE1
+SNP: SNP
+P: P_LINREG

@@ -1,0 +1,137 @@
+Start time: Tue Feb 23 01:54:29 2021
+
+              |==============================|
+              |        REGENIE v1.0.6.9      |
+              |==============================|
+
+Copyright (c) 2020 Joelle Mbatchou and Jonathan Marchini.
+Distributed under the MIT License.
+
+Log of output saved in file : output/phenotypes_ASTHMA_T2D.regenie.log
+
+Options in effect:
+  --step 1 \
+  --bed data/genotypes21_22 \
+  --phenoFile output/phenotypes.regenie_phenotype \
+  --covarFile output/phenotypes.regenie_covar \
+  --extract output/cache/genotypes21_22.qc_pass.snplist \
+  --keep output/cache/genotypes21_22.qc_pass.id \
+  --bt \
+  --bsize 1000 \
+  --lowmem \
+  --lowmem-prefix output \
+  --threads 8 \
+  --out output/phenotypes_ASTHMA_T2D.regenie
+
+Fitting null model
+ * bim              : [data/genotypes21_22.bim] n_snps = 16577
+   -keeping only variants specified in [output/cache/genotypes21_22.qc_pass.snplist]
+     +number of variants remaining in the analysis = 16455
+ * fam              : [data/genotypes21_22.fam] n_samples = 100
+   -keeping only individuals specified in [output/cache/genotypes21_22.qc_pass.id]
+     +number of genotyped individuals to keep in the analysis = 100
+ * bed              : [data/genotypes21_22.bed]
+ * phenotypes       : [output/phenotypes.regenie_phenotype] n_pheno = 2
+   -number of phenotyped individuals = 100
+ * covariates       : [output/phenotypes.regenie_covar] n_cov = 2
+   -number of individuals with covariate data = 100
+ * number of individuals used in analysis = 100
+   -fitting null logistic regression on binary phenotypes...done (0ms) 
+   -residualizing and scaling phenotypes...done (0ms) 
+   -WARNING: Sample size is less than 5,000 so using LOOCV instead of 5-fold CV.
+ * # threads        : [8]
+ * block size       : [1000]
+ * # blocks         : [17]
+ * # CV folds       : [100]
+ * ridge data_l0    : [5 : 0.01 0.25 0.5 0.75 0.99 ]
+ * ridge data_l1    : [5 : 0.01 0.25 0.5 0.75 0.99 ]
+ * approximate memory usage : 957MB
+ * writing level 0 predictions to disk
+   -temporary files will have prefix [output_l0_Y]
+   -approximate disk space needed : 1MB
+ * setting memory...done
+
+Chromosome 21
+ block [1] : 1000 snps  (4ms) 
+   -residualizing and scaling genotypes...done (1ms) 
+   -calc working matrices...done (1033ms) 
+   -calc level 0 ridge...done (14ms) 
+ block [2] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...done (986ms) 
+   -calc level 0 ridge...done (13ms) 
+ block [3] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...done (1007ms) 
+   -calc level 0 ridge...done (12ms) 
+ block [4] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...done (1003ms) 
+   -calc level 0 ridge...done (12ms) 
+ block [5] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...Start time: Tue Feb 23 02:07:42 2021
+
+              |==============================|
+              |        REGENIE v1.0.6.9      |
+              |==============================|
+
+Copyright (c) 2020 Joelle Mbatchou and Jonathan Marchini.
+Distributed under the MIT License.
+
+Log of output saved in file : output/phenotypes_ASTHMA_T2D.regenie.log
+
+Options in effect:
+  --step 1 \
+  --bed data/genotypes21_22 \
+  --phenoFile output/phenotypes.regenie_phenotype \
+  --covarFile output/phenotypes.regenie_covar \
+  --extract output/cache/genotypes21_22.qc_pass.snplist \
+  --keep output/cache/genotypes21_22.qc_pass.id \
+  --bt \
+  --bsize 1000 \
+  --lowmem \
+  --lowmem-prefix output \
+  --threads 8 \
+  --out output/phenotypes_ASTHMA_T2D.regenie
+
+Fitting null model
+ * bim              : [data/genotypes21_22.bim] n_snps = 16577
+   -keeping only variants specified in [output/cache/genotypes21_22.qc_pass.snplist]
+     +number of variants remaining in the analysis = 16455
+ * fam              : [data/genotypes21_22.fam] n_samples = 100
+   -keeping only individuals specified in [output/cache/genotypes21_22.qc_pass.id]
+     +number of genotyped individuals to keep in the analysis = 100
+ * bed              : [data/genotypes21_22.bed]
+ * phenotypes       : [output/phenotypes.regenie_phenotype] n_pheno = 2
+   -number of phenotyped individuals = 100
+ * covariates       : [output/phenotypes.regenie_covar] n_cov = 2
+   -number of individuals with covariate data = 100
+ * number of individuals used in analysis = 100
+   -fitting null logistic regression on binary phenotypes...done (0ms) 
+   -residualizing and scaling phenotypes...done (0ms) 
+   -WARNING: Sample size is less than 5,000 so using LOOCV instead of 5-fold CV.
+ * # threads        : [8]
+ * block size       : [1000]
+ * # blocks         : [17]
+ * # CV folds       : [100]
+ * ridge data_l0    : [5 : 0.01 0.25 0.5 0.75 0.99 ]
+ * ridge data_l1    : [5 : 0.01 0.25 0.5 0.75 0.99 ]
+ * approximate memory usage : 957MB
+ * writing level 0 predictions to disk
+   -temporary files will have prefix [output_l0_Y]
+   -approximate disk space needed : 1MB
+ * setting memory...done
+
+Chromosome 21
+ block [1] : 1000 snps  (4ms) 
+   -residualizing and scaling genotypes...done (1ms) 
+   -calc working matrices...done (1038ms) 
+   -calc level 0 ridge...done (11ms) 
+ block [2] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...done (982ms) 
+   -calc level 0 ridge...done (11ms) 
+ block [3] : 1000 snps  (3ms) 
+   -residualizing and scaling genotypes...done (0ms) 
+   -calc working matrices...
