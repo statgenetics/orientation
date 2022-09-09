@@ -19,6 +19,16 @@ As the next step please [fork](https://docs.github.com/en/free-pro-team@latest/g
 This tutorial (and our research in general) requires `R`, `Python`, `Script of Scripts (SoS)` bioinformatics workflow system and `docker`.
 Please follow this [setup instruction](https://wanggroup.org/orientation/jupyter-setup.html) to complete the installations.
 
+### Text editor for coding
+
+You can use any editor of choice but if you have not thought about this before, here is a personal suggestion: I use `gvim` for many years before I switched to [VS Code](https://code.visualstudio.com/) text editor --- yes it is from Microsoft but yes it is good! I now use VS Code with Vim key binding (an Extension you can find in VS Code Extension Marketplace) so I can still use keyboard conventions that I'm familiar with.
+
+To open a particular folder (eg a github local clone) on your computer from command terminal:
+
+```bash
+cd <path to the folder>
+code ./
+```
 
 ## Task 2: IPython notebook and SoS bioinformatics workflow
 
