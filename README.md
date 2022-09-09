@@ -4,8 +4,6 @@ This tutorial & exercise is designed for trainees interested in joining our lab.
 Even if you lack the skills for one or more of the languages at the time you start this tutorial, we believe the learning curve for new skills enough to complete the exercises is reasonable given a few hours of effort. Still,
 please do not hesitate to contact us (wang.gao@columbia.edu) if there is a blocker as you go through the material.
 
-An additional note on effort: for student interns and research assistants we expect a minimum of 10hrs/week effort. Successful completion of this exercise in a week's time is an indication of the efforts you are able to devote.
-
 ## Task 1: Unix command shell and command tools
 
 In this task you are going to work with git from command shell, and install basic software and packages needed for data analysis of Tasks 2 and 3.
@@ -59,43 +57,3 @@ Now please run the command above again to generate IPython based HTML files to `
 ## Submission
 
 After you have completed all tasks please make a tarball for your `docs` folder and email it to `wang.gao@columbia.edu` for us to review.
-
-## Moving forward
-
-Upon submission of your work, we will review and determine a fit for you based on your response. Projects available for Spring 2021 include:
-
-Methods with applications:
-
-- Rare variant association analysis in family data
-- Method for gene-gene / gene-environment interaction in large-scale association studies
-- Inference of kinship in ancient DNA data 
-- Statistical fine-mapping in family-based study designs
-- Statistical fine-mapping in multiple ancestries
-- Multi-tissue alternative polyadenylation calling from brain RNA-seq data
-- Statistical benchmark for colocalization analysis
-- Multivariate models for colocalization analysis
-- Copy number variation association study for Alzheimer's disease
-- Evaluation of fine-mapping in unbalanced case-control design
-- Matrix completion and prediction of Alzheimer's disease risk using epidemiological records
-- Alzheimer's disease risk prediction and subtyping using whole genome sequence data
-
-Applied data analysis:
-
-- Rare variant association studies with exome data in Alzheimer's disease families
-- Linkage analysis for Alzheimer's disease families
-- Gene-gene and gene-environment interaction analysis in UK Biobank data for Asthma
-- Pleiotropy and mediation analysis in UK Biobank data
-- Development of polygenic risk score prediction pipeline
-- Statistical fine-mapping with functional genomic annotations
-- Linear mixed model analysis of various phenotypes in UK Biobank data
-- Improve and implement fine-mapping pipeline for UK Biobank data analysis (univariate and multivariate)
-- Multi-tissue fine-mapping for splice QTL data in GTEx project
-- Pipeline for TWAS analysis
-- ASoC variants and DNase footprint calling in ROSMAP data
-
-Software development:
-
-- [SEQSpark](https://github.com/statgenetics/seqspark)
-- [Dynamic Statistical Comparisons](https://github.com/stephenslab/dsc)
-
-Please also find here [a list of past and ongoing projects in our group](http://statgen.us/lab-wiki/project_resource/project.html). 
