@@ -6,7 +6,7 @@ please do not hesitate to contact us (wang.gao@columbia.edu) if there is a block
 
 ## Task 1: Unix command shell and command tools
 
-In this task you are going to work with git from command shell, and install basic software and packages needed for data analysis of Tasks 2 and 3.
+We assume you are comfortable with command-line interface (on Linux or Mac). In this task you are going to work with git from command shell, and install basic software and packages needed for data analysis of Tasks 2 and 3.
 
 ### Git
 
