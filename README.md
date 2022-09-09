@@ -10,14 +10,14 @@ In this task you are going to work with git from command shell, and install basi
 
 ### Git
 
-Most of our work will be saved and shared on github in public or private repositories. If you have not used git in the past, please follow the [instructions here for a 5 minutes git tutorial](http://statgen.us/lab-wiki/orientation/5m-git).
+Most of our work will be saved and shared on github in public or private repositories. If you have not used git in the past, please follow the [instructions here for a 5 minutes git tutorial](https://wanggroup.org/orientation/5m-git).
 
 As the next step please [fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) this repository, add your name to the Markdown file named `hello.md`, commit it to github with a customized commit message, eg, "Add my name and github handle", and [create a pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests) so we can see your update and incorporate it to the repository.
 
 ### Analysis software setup
 
 This tutorial (and our research in general) requires `R`, `Python`, `Script of Scripts (SoS)` bioinformatics workflow system and `docker`.
-Please follow this [setup instruction](http://statgen.us/lab-wiki/orientation/jupyter-setup.html) to complete the installations.
+Please follow this [setup instruction](https://wanggroup.org/orientation/jupyter-setup.html) to complete the installations.
 
 
 ## Task 2: IPython notebook and SoS bioinformatics workflow
