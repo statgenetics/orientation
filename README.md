@@ -1,8 +1,9 @@
 # Orientation exercises
 
-This tutorial & exercise is designed for trainees interested in joining our lab. It reflects our expected computing skills using R, Python, Linux shell commands and bioinformatics workflow languages.
-Even if you lack the skills for one or more of the languages at the time you start this tutorial, we believe the learning curve for new skills enough to complete the exercises is reasonable given a few hours of effort. Still,
-please do not hesitate to contact us (wang.gao@columbia.edu) if there is a blocker as you go through the material.
+This tutorial & exercise, developed in 2020, is designed for trainees interested in joining our lab. It reflects our expected computing skills using R, Python, Linux shell commands and bioinformatics workflow languages.
+By completing these exercise you will also set up the computational environment on your computer necessary to perform small scale data analysis that does not require access to high performance computing cluster.
+Even if you lack the skills for one or more of the languages at the time you start this tutorial, we believe the learning curve for teaching yourself enough to complete the exercises is reasonable. 
+Still, please do not hesitate to contact us (wang.gao@columbia.edu) if there is a blocker as you go through the material.
 
 ## Task 1: Unix command shell and command tools
 
@@ -21,9 +22,9 @@ Please follow this [setup instruction](https://wanggroup.org/orientation/jupyter
 
 ### Text editor for coding
 
-You can use any editor of choice but if you have not thought about this before, here is a personal suggestion: I use `gvim` for many years before I switched to [VS Code](https://code.visualstudio.com/) text editor --- yes it is from Microsoft but yes it is good! I now use VS Code with Vim key binding (an Extension you can find in VS Code Extension Marketplace) so I can still use keyboard conventions that I'm familiar with.
+You can use any editor of choice but if you have not thought about this before, here is a personal suggestion: I use `gvim` for many years before I switched to [VS Code text editor](https://wanggroup.org/productivity_tips/vscode-setup).
 
-To open a particular folder (eg a github local clone) on your computer from command terminal:
+To open a particular folder on your computer from command terminal:
 
 ```bash
 cd <path to the folder>
